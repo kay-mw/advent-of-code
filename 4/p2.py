@@ -29,25 +29,3 @@ for row_number, row in enumerate(input):
                             count_xmas += 1
 
 print(count_xmas)
-
-# There are four combinations:
-
-# MAS
-# MAS
-
-# SAM
-# SAM
-
-# MAS
-# SAM
-
-# SAM
-# MAS
-
-
-# Couldn't you just check for down+right and down+left.
-# Then, if it's down+right, you check two columns over for a down+left?
-# If it's down+left, you check two columns over for a down+right?
-
-# 1911 - TOO LOW
-# 2698 - TOO HIGH
