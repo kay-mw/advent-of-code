@@ -1,4 +1,4 @@
-input = open("example.txt", "r").readlines()
+input = open("input.txt", "r").readlines()
 
 rules = []
 updates = []
