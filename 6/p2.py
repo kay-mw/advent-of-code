@@ -1,4 +1,5 @@
 import copy
+import time
 
 input = open("input.txt", "r").readlines()
 
@@ -21,12 +22,14 @@ for row_num, row in enumerate(input):
 
 repeat_count = 0
 # This takes a while...
+print(len(possible_obstructions))
 for obstruction_num, obstruction in enumerate(possible_obstructions):
     exited = False
     positions = []
     row_num = starting_position[0]
     col_num = starting_position[1]
     direction = starting_position[2]
+    t0 = time.time()
     while not exited:
         position = [row_num, col_num, direction]
         if position in positions:
@@ -87,3 +90,5 @@ for obstruction_num, obstruction in enumerate(possible_obstructions):
                     else:
                         col_num = col_num + 1
                         continue
+
+    print(time.time() - t0)
