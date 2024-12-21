@@ -9,8 +9,6 @@ for i, line in enumerate(puzzle):
 
 def recursive_search(
     plot: str,
-    first_time: bool,
-    initial_position: list[int],
     positions: list[list[int]],
     row_length: int,
     col_length: int,
@@ -68,14 +66,9 @@ def recursive_search(
         else:
             perimeter += 1
 
-    if first_time:
-        checked_positions.append(initial_position)
-
     if new_positions:
         return recursive_search(
             plot=plot,
-            first_time=False,
-            initial_position=[],
             positions=new_positions,
             row_length=row_length,
             col_length=col_length,
@@ -89,35 +82,37 @@ def recursive_search(
 visited = []
 regions = {}
 for row_num, row in enumerate(puzzle):
-    print(row_num)
     for col_num, plot in enumerate(row):
         if row_num == 0 and col_num == 0:
             positions, perimeter = recursive_search(
                 plot=plot,
-                first_time=True,
-                initial_position=[row_num, col_num],
                 positions=[[row_num, col_num]],
                 row_length=len(puzzle),
                 col_length=len(row),
-                checked_positions=[],
+                checked_positions=[[row_num, col_num]],
                 perimeter=0,
             )
             [visited.append(position) for position in positions]
-            regions[uuid.uuid4()] = {"positions": positions, "perimeter": perimeter}
+            regions[uuid.uuid4()] = {
+                "positions": sorted(positions),
+                "perimeter": perimeter,
+            }
         else:
             if [row_num, col_num] not in visited:
                 positions, perimeter = recursive_search(
                     plot=plot,
-                    first_time=True,
-                    initial_position=[row_num, col_num],
                     positions=[[row_num, col_num]],
                     row_length=len(puzzle),
                     col_length=len(row),
-                    checked_positions=[],
+                    checked_positions=[[row_num, col_num]],
                     perimeter=0,
                 )
                 [visited.append(position) for position in positions]
-                regions[uuid.uuid4()] = {"positions": positions, "perimeter": perimeter}
+                regions[uuid.uuid4()] = {
+                    "positions": sorted(positions),
+                    "perimeter": perimeter,
+                }
+
 
 price = 0
 for region in regions.values():
