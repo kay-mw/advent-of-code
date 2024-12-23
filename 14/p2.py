@@ -1,6 +1,3 @@
-import os
-import time
-
 puzzle = open("input.txt", "r").readlines()
 
 robots = []
@@ -52,10 +49,6 @@ for i in range(10000):
                 tree += str(char) + "\n"
             else:
                 tree += str(char)
-            # tree += str(char)
 
     with open("tree.txt", "a") as file:
         file.write(f"{i}\n{tree}\n")
-
-    # The problem with this approach is that it doesn't store the previous position.
-    # This means that the robot will just move once each time.
