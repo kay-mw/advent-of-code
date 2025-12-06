@@ -27,7 +27,7 @@ for line in puzzle:
             machines.append(machine)
             machine = []
 
-
+machines
 for machine in machines:
     a = machine[0]
     b = machine[1]
@@ -41,3 +41,12 @@ for machine in machines:
 
     prize_x = prize[0]
     prize_y = prize[1]
+
+# Fundamental problem:
+## How do you determine if two numbers (x, y) can create the target number (t) if multiplied (n1, n2) times?
+
+## (x * n1) + (y * n2) = t
+## x, y, and t are already known, so you just need to find n1 and n2.
+
+# Brute forcing would be far too inefficient.
+# There's too many possible combinations when you can multiply x and y 80+ times each.
