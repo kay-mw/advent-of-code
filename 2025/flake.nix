@@ -21,6 +21,7 @@
             (haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [ cabal-install ]))
             julia
             rustc
+            zig
           ];
         };
     };
