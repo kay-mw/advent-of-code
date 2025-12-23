@@ -22,6 +22,7 @@
             julia
             rustc
             zig
+            beam28Packages.elixir_1_19
           ];
         };
     };
